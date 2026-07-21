@@ -1,7 +1,6 @@
 # IoT Система за мониторинг на добитък
 
-Монолитно Node.js + Express.js приложение с обикновен HTML / CSS / Vanilla JavaScript.
-Не използва React, Vite, Bun или TypeScript.
+Node.js + Express приложение с чист HTML, CSS и JavaScript за мониторинг на добитък в реално време.
 
 ## Архитектура
 
