@@ -16,7 +16,7 @@
 ## Стартиране
 
 ```bash
-cd express-app
+cd smart-farm-server
 npm install
 node server.js
 ```
@@ -41,14 +41,15 @@ node server.js
 ## Структура
 
 ```
-express-app/
-├── server.js            # Express сървър + REST API + симулация
+smart-farm-server/
+├── Arduino/              # Код за ESP32 / Arduino хардуер
+├── server.js             # Express сървър + REST API + симулация
 ├── package.json
 ├── models/
-│   └── store.js         # In-memory модели (Animal, Alert)
+│   └── store.js          # In-memory модели (Animal, Alert)
 └── public/
-    ├── index.html       # Landing страница
-    ├── dashboard.html   # Главно табло
+    ├── index.html        # Landing страница
+    ├── dashboard.html    # Главно табло
     ├── css/styles.css
-    └── js/app.js        # Карта, графики, симулация (клиент)
+    └── js/app.js         # Карта, графики, симулация (клиент)
 ```
