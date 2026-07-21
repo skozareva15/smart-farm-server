@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Табло · IoT Добитък</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <a href="/" class="logo">🐑 IoT Добитък</a>
+      <span class="subtitle">IoT Табло за добитък</span>
+    </div>
+    <button id="refreshBtn" class="btn btn-ghost">↻ Обнови данните</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="dashboard">Табло</button>
+    <button class="tab" data-tab="animals">Животни</button>
+    <button class="tab" data-tab="health">Мониторинг</button>
+  </nav>
+
+  <main class="container">
+
+    <!-- ======================== ТАБЛО ======================== -->
+    <section class="tab-panel active" id="tab-dashboard">
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>Карта на стадото</h3>
+            <p class="muted">Зелен кръг = геозона. Червен маркер = нарушение.</p>
+          </div>
+          <div id="map" class="map"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Активни известия</h3>
+            <p class="muted" id="alertsCount">0 известия</p>
+          </div>
+          <div id="alertsList" class="alerts"></div>
+        </div>
+      </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Режим на симулация</h3>
+            <p class="muted">Генерирай GPS актуализации в реално време.</p>
+          </div>
+        <div class="row">
+          <button id="simStartBtn" class="btn btn-primary">▶ Симулирай движение</button>
+          <button id="simStopBtn" class="btn btn-danger" hidden>■ Спри симулацията</button>
+          <button id="breachBtn" class="btn btn-outline">⚠ Активирай нарушение на ограда</button>
+        </div>
+        <p id="simStatus" class="muted small">● Симулацията е активна — данните се обновяват на всеки 1.5с.</p>
+      </div>
+    </section>
+
+    <!-- ======================== ЖИВОТНИ ======================== -->
+    <section class="tab-panel" id="tab-animals">
+      <div class="grid grid-3-1">
+        <div class="card">
+          <div class="card-header">
+            <h3>Регистър на стадото</h3>
+          </div>
+          <div class="table-wrap">
+            <table class="table" id="animalsTable">
+              <thead>
+                <tr>
+                  <th>Име / ID</th>
+                  <th>Нашийник</th>
+                  <th>Вид</th>
+                  <th>Батерия</th>
+                  <th>Сигнал</th>
+                  <th>Тегло</th>
+                  <th>Статус</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <form id="registerForm" class="card">
+          <div class="card-header">
+            <h3>Регистрация на ново животно</h3>
+            <p class="muted">Добавете нов нашийник към регистъра.</p>
+          </div>
+          <label>Име / Номер
+            <input name="name" required placeholder="напр. Бялка" />
+          </label>
+          <label>ID на нашийник
+            <input name="collarId" required placeholder="напр. CLR-1099" />
+          </label>
+          <label>Вид добитък
+            <select name="type" required>
+              <option value="Sheep">Овца</option>
+              <option value="Cow">Крава</option>
+              <option value="Horse">Кон</option>
+              <option value="Goat">Коза</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" type="submit">Регистрирай животно</button>
+          <p id="registerStatus" class="success small" hidden>Животното е регистрирано.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ======================== МОНИТОРИНГ ======================== -->
+    <section class="tab-panel" id="tab-health">
+      <div class="card">
+        <div class="card-header row between">
+          <div>
+            <h3>Мониторинг на жизнените показатели</h3>
+            <p class="muted">Изберете животно за тегло, пулс и телесна температура в реално време.</p>
+          </div>
+          <select id="healthSelect"></select>
+        </div>
+
+        <div class="stats" id="healthStats"></div>
+
+        <div class="grid grid-3">
+          <div>
+            <h4 class="chart-title">Тегло (кг)</h4>
+            <div class="chart-wrap"><canvas id="weightChart"></canvas></div>
+          </div>
+          <div>
+            <h4 class="chart-title">Пулс (bpm)</h4>
+            <div class="chart-wrap"><canvas id="pulseChart"></canvas></div>
+          </div>
+          <div>
+            <h4 class="chart-title">Телесна температура (°C)</h4>
+            <div class="chart-wrap"><canvas id="tempChart"></canvas></div>
+          </div>
+        </div>
+
+        <div id="healthNote"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
