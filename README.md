@@ -5,11 +5,11 @@ Node.js + Express приложение с чист HTML, CSS и JavaScript за 
 ## Архитектура
 
 - **Бекенд:** Node.js + Express.js (`server.js`)
-- **Бази данни:** In-memory store (Mongoose-подобни модели в `models/`)
-- **Фронтенд:** Статичен HTML + CSS + Vanilla JS в `/public`
-- **Карта:** Leaflet.js (CDN)
-- **Графики:** Chart.js (CDN)
-- **Симулация:** Haversine формула за реалистично GPS движение
+- **Бази данни:** In-memory store (RAM съхранение)
+- **Фронтенд:** HTML5 + CSS3 + Vanilla JS (в папка `public`)
+- **Карта:** Leaflet.js (зареждана чрез CDN)
+- **Графики:** Chart.js (зареждана чрез CDN)
+- **Симулация:** Haversine формула за геозониране (Geofencing) и сървърен модул за симулация на GPS координати
 - **REST API:** JSON ендпойнти под `/api/*`
 
 ## Стартиране
