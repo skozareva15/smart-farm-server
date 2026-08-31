@@ -15,12 +15,11 @@ Node.js + Express приложение с чист HTML, CSS и JavaScript за 
 ## Стартиране
 
 ```bash
-cd smart-farm-server
-npm install
+npm start
 node server.js
 ```
 
-След това отворете: http://localhost:3000
+http://localhost:3000
 
 ## REST API ендпойнти
 
