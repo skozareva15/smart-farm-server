@@ -40,7 +40,7 @@ http://localhost:3000
 
 ```
 smart-farm-server/
-├── Arduino/              # Код за ESP32 / Arduino хардуер
+├── Arduino/              # Код за ESP32 
 ├── server.js             # Express сървър + REST API + симулация
 ├── package.json
 ├── models/
